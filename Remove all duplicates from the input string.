@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+char *RemoveDuplicate(char *str)
+{
+    bool *Hash;
+    Hash=(bool*)calloc(256,sizeof(bool));
+    
+    int front=0, rear=0;
+    
+    while(*(str+front))
+    {
+        if(Hash[*(str+front)]==0)
+        {
+            Hash[*(str+front)]=1;
+            str[rear]=str[front];
+            rear++;
+        }
+        front++;
+    }
+    *(str+front)='\0';
+    return str;
+}
+
+int main()
+{
+char str[20]="ayush sharma";
+cout<<RemoveDuplicate(str)<<endl;
+cout<<str<<endl;
+return 0;
+}
