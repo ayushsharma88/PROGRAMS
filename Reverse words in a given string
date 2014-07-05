@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<iostream>
+#include <stdlib.h>
+#include <string.h>
+
+
+using namespace std;
+
+void reverse(char* start,char *end)
+{
+    char temp;
+    while(start<end)
+    {
+        temp=*start;
+        *start=*end;
+        *end=temp;
+        end--;
+        start++;
+    }
+}
+void rotateWord (char *str)
+{
+    char *temp=str;
+    char *begin;
+    begin=str;
+    while(*temp)
+    {
+        temp++;
+        if(*temp=='\0')
+        {
+            reverse(begin,temp-1);
+        }
+        else if(*temp==' ')
+        {
+            reverse(begin,temp-1);
+            begin=temp+1;
+        }
+    }
+    reverse(str,temp-1);
+}
+int main()
+{
+char str[20]="Ayush Sharma";
+rotateWord(str);
+cout<<str<<endl;
+return 0;
+}
