@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<iostream>
+#include <stdlib.h>
+#include <string.h>
+
+
+using namespace std;
+
+int IsRotation(char *str, char* str1)
+{
+   char *temp   = (char *)malloc(sizeof(char)*(strlen(str)*2 + 1));
+   temp[0] = '\0';
+   strcat(temp,str);
+   strcat(temp,str);
+   void *prt = strstr(temp,str1);
+   if(prt != NULL)
+   return 1;
+   else
+   return 0;
+
+}
+
+int main()
+{
+char str[20]="ABCD";
+char str1[20]="CDAB";
+
+if(IsRotation(str,str1))
+{
+    cout<<"Yes its a rotated str"<<endl;
+}
+else
+{
+    cout<<"its not a rotated str"<<endl;
+}
+return 0;
+}
+
