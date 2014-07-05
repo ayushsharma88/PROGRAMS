@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<iostream>
+#include <stdlib.h>
+#include <string.h>
+
+
+using namespace std;
+
+void Combination(char *str,char *str1,char * istr,int m,int n,int i)
+{
+    if(m==0 && n==0)
+    {
+        cout<<istr<<endl;    
+    }
+    if(m!=0)
+    {
+        istr[i]=str[0];
+        Combination(str+1,str1,istr,m-1,n,i+1);
+    }
+    if(n!=0)
+    {
+        istr[i]=str1[0];
+        Combination(str,str1+1,istr,m,n-1,i+1);
+    }
+}
+void PrintCombo(char *str,char *str1,int m,int n)
+{
+    cout<<"hello"<<endl;
+    char *iStr= (char*)malloc((m+n+1)*sizeof(char));
+    iStr[m+n] = '\0';
+    Combination(str,str1,iStr,m,n,0);
+}
+int main()
+{
+char str[20]="ABC";
+char str1[20]="D";
+cout<<"hello1"<<endl;
+PrintCombo(str,str1,strlen(str),strlen(str1));
+return 0;
+}
