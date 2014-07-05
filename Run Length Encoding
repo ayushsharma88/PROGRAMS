@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<iostream>
+#include <stdlib.h>
+#include <string.h>
+
+
+using namespace std;
+
+void RunLength (char *str)
+{
+
+    int length=strlen(str);
+
+    char *temp=(char*)malloc(length*2*sizeof(char));
+    char *wordtrack = str;
+    char *track = str;
+    int count=0;
+    int location=0;
+
+    while(*wordtrack)
+    {
+        track++;
+        if(*track==*wordtrack)
+        {
+            count++;
+        }
+        else
+        {
+            cout<<*track<<endl;
+            count++;
+            cout<<count;
+            count=0;
+            temp[location]=*wordtrack;
+            temp[location+1]=count;
+            count=0;
+            location+=2;
+            wordtrack=track;
+        }
+        
+    }
+    cout<<location;
+    temp[location]='\0';
+    cout<<temp;
+}
+
+int main()
+{
+char str[200]="wwwwwwwwwwwwweeeeeeeeeeeeeeeeeeesssssssssssssssddddddddddddddd";
+RunLength(str);
+cout<<str<<endl;
+return 0;
+}
