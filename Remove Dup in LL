@@ -1,0 +1,155 @@
+#include<stdio.h>
+#include<iostream>
+#include <stdlib.h>
+#include <string.h>
+
+using namespace std;
+
+    class List
+{
+    private:
+    struct Node
+    {
+        int data;
+        Node *next;
+    } ;
+    Node *head;
+    
+    public:
+        
+        List();
+        ~ List();
+        void Print();
+        void Append(int num);
+        int Count();
+        void DeleteList();
+        void RemoveDup();
+        
+};
+
+List::List()
+{
+    head=NULL;
+}
+ 
+List::~List()
+{
+      if (head == NULL)
+        return;
+ 
+  Node *tmp;
+  while(head != NULL)
+  {
+       tmp = head->next ;
+     delete head;
+       head = tmp;
+  }
+}
+void List::Append(int num)
+{
+    Node *newnode;
+    newnode= new Node;
+    newnode->data=num;
+    newnode->next=NULL;
+    
+    if(head==NULL)
+    {
+        head=newnode;
+    }
+    else
+    {
+        Node *temp;
+        temp=head;
+        while(temp->next != NULL)
+        temp=temp->next;
+        temp->next=newnode;
+    }
+}
+void List::Print()
+{
+    
+    if(head==NULL)
+    {
+        cout<<"List is Empty"<<endl;
+    }
+    else
+    {
+        Node *temp=head;
+        while(temp!=NULL)
+        {
+            cout<<temp->data<<endl;
+            temp=temp->next;
+        }
+    }
+}
+
+int List::Count()
+{
+    Node *p=head;
+    int count=0;
+    while(p)
+    {
+        p=p->next;
+        count++;
+    }
+    cout<<"Count is "<<count<<endl;
+    return count;
+}
+
+void List::DeleteList()
+{
+    Node*p=head;
+    
+    if(head==NULL)
+    return;
+    
+    while(p)
+    {
+        Node *temp=p->next;
+        free(p);
+        p=temp;
+    }
+    head=p;
+}
+
+void List::RemoveDup()
+{
+    Node *p=head;
+    
+    if(p==head && head!=NULL && p->next!= NULL && p->data == p->next->data)
+    {
+        Node *p1=p;
+        head=p->next;
+        free(p1);
+        
+    }
+    while(p)
+    {
+        if(p->next!= NULL && p->data == p->next->data)
+        {
+            Node *p1=p->next;
+            p->next=p1->next;
+            free(p1);
+        }
+        p=p->next;
+    }
+        
+}
+int main()
+{
+    List *p;
+    p= new List();
+    p->Append(1);
+    p->Append(1);
+    p->Append(3);
+    p->Append(4);
+    p->Append(4);
+    p->Append(5);
+    p->Append(5);
+    p->Append(6);
+    p->RemoveDup();
+    p->Print();
+    p->DeleteList();
+
+return 0;
+}
