@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<iostream>
+#include <stdlib.h>
+#include <string.h>
+
+
+using namespace std;
+
+void swap(char *i,char *j)
+{
+    char temp;
+    temp=*i;
+    *i=*j;
+    *j=temp;
+}
+
+void PrintCombo(char *str,int i, int l)
+{
+    int j;
+    if(i==l)
+    {
+        cout<<str<<endl;
+    }
+    else
+    {
+        for(j=i;j<l;j++)
+        {
+            swap((str+i),(str+j));
+            PrintCombo(str,i+1,l);
+            swap((str+i),(str+j));
+            
+        }
+    }
+    
+}
+
+int main()
+{
+char str[20]="sdr";
+PrintCombo(str,0,strlen(str));
+return 0;
+}
