@@ -1,0 +1,9 @@
+
+
+int size(node *root)
+{
+    if(root == NUL)
+    return 0;
+    
+    return(size(root->left)+1+size(root->right));
+}
