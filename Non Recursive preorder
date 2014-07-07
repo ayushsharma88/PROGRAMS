@@ -1,0 +1,21 @@
+
+
+Stack S;
+
+void preorder(node *root)
+{
+    node* current=root;
+    Push(current);
+    
+    while(!stack is )
+    {
+        current=pop();
+        cout<<current<<endl;
+        if(current->left!=null)
+        push(current->left);
+        else ((current->right!=null))
+        push(current->right);
+        
+    }
+    
+}
