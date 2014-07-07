@@ -1,0 +1,16 @@
+
+int LCA(node* root, int a,int b)
+{
+    node* current =root;
+    
+    while(1)
+    {
+        if(current->data>a &&current->data>b)
+        current=current->left;
+        else if (current->data<a && current->data<b)
+        current=current->right;
+        else 
+        return curren->data;
+        
+    }
+}
