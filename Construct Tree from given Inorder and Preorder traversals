@@ -1,0 +1,28 @@
+
+struct * constructBST(char *inorder, char *preorder, int start, int end)
+{
+    static int pre=0;
+    
+    if(start>end)
+    return NULL;
+    node *root->data=preorder[pre++];
+    
+    if(start == end)
+    return root;
+    int inorder=search(inorder,start,end,root->data)
+    
+    node *left=constructBST(inorder, preorder, start, inorder-1);
+    nore *right=constructBST(inorder, preorder, inorder+1, end);
+    
+    return root;
+    
+}
+
+
+
+  a
+b    c
+
+
+io bac
+po abc
