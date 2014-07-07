@@ -1,0 +1,26 @@
+int LCA(char inorder,int data1, int data2,int count)
+{
+    int start,end;
+    for(int i=0;i<count;i++)
+    {
+        if(data1 == inorder[i])
+        start=i;
+        if(data2 == inorder[i])
+        end=i;
+    }
+    
+    if(start>end)
+    {
+        start= start+end;
+        end=start-end;
+        start=start-end;
+    }
+    int low=inorder[start];
+    for(i=start;i<=end;i++)
+    {
+        if(inorder[i]<low)
+        low=inorder[i];
+    }
+    
+    return low;
+}
