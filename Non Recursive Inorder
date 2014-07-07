@@ -1,0 +1,29 @@
+
+
+Stack S;
+
+void intorder(node *root)
+{
+    node current = root;
+    int done =0;
+    
+    while(!done)
+    {
+        if(root!=null)
+        {
+            S.Push(current->data)
+            current=current->next;
+        }
+        else
+        {
+            if(!stackisEmpty)
+            {
+                current=pop();
+                cout<<current->data<<endl;
+                current=current->right;
+            }
+            else
+            done=1;
+        }
+    }
+    
