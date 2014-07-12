@@ -1,0 +1,42 @@
+
+              30
+          10      20
+      50        45     35
+      
+      
+      serialize
+      
+      
+      30 10 50 # # # 20 45 # # 35 # #
+      
+      void serialize(tree* root, outstream out)
+      {
+          if(!root)
+          {
+              out>>"# ";
+          }
+          else
+          {
+              out>>root->data>>" ";
+              serialize(root->left,out);
+              serialize(root->right,out);
+          }
+      }
+      
+      
+      de-serialize
+      
+      void de-serialize(tree* root,instream in)
+      {
+          int isnumber;
+          int token;
+          
+          //read from the file and check if it is a number or a #
+          //if hash return;
+          if(isnumber)
+          {
+              root = new tree(token);
+              de-serialize(root->left,in);
+              de-serialize(root->right,in);
+          }
+      }
