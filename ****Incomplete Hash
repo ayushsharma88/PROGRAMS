@@ -1,0 +1,68 @@
+#include <cstdio>
+#include <iostream>
+#include <list>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+class HashNode
+{
+  public:
+  int key;
+  int value;
+  
+  HashNode(int Key);
+  int getKey();
+  int getValue();
+  
+};
+
+  HashNode::HashNode(int Key)  
+  {
+      key=Key;
+      value=0;
+  }
+  
+  int HashNode::getKey()
+  {
+      return key;
+  }
+  
+    int HashNode::getValue()
+  {
+      return value;
+  }
+  
+
+const int TotalSize=128;
+/*
+
+class HashTable
+{
+    private:
+        vector<HashNode> table;
+    public:
+    
+        HashTable()
+        {
+            for(int i=0;i<TotalSize;i++)
+            {
+                HashNode Hn = new HashNode();
+                
+            }
+        }
+};
+
+*/
+int main()
+{
+    HashNode Hn;
+    
+    Hn= new HashNode(1);
+    
+    return 0;
+    
+}
