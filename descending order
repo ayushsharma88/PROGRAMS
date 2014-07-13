@@ -1,0 +1,12 @@
+
+
+void DesendingOrder(node *root)
+{
+    if (root==NULL)
+    rerutn;
+    
+    DesendingOrder(root->right);
+    cout<<root->data;
+    DesendingOrder(root->left);
+    
+}
