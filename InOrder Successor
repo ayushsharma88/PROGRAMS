@@ -1,0 +1,44 @@
+
+
+
+
+
+
+int inorderSuccessor(node *root,node *n)
+{
+    node * curr=NULL;
+    node * succ=NULL;
+    if(n->right!=NULL)
+    {
+        node * curr= n;
+        while(curr->left != NULL)
+        {
+            curr=curr->left;
+        }
+        return curr->data;
+    }
+    
+    else 
+    {
+        curr=root;
+        
+        while(curr!=NULL)
+        {
+            if(curr->data > n->data)
+            {
+                succ=curr;
+                curr=curr->left;
+                
+            }
+            else if (curr->data < n->data)
+            {
+                curr=curr->right;
+            }
+            else
+            break;
+        }
+    }
+    
+    return succ;
+
+}
