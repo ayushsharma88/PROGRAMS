@@ -1,0 +1,80 @@
+#include <cstdio>
+#include <iostream>
+#include <list>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+class BST
+{
+    public:
+    struct Node
+    {
+        int num;
+        Node* left;
+        Node* right;
+    };
+    
+    Node *root;
+    
+    Public:
+    
+    BST();
+    ~BST();
+    void Insert(int data);
+    void Print();
+    
+    
+};
+
+BST::BST()
+{
+    root=NULL;
+}
+
+~BST::BST()
+{
+    if(root== NULL)
+    return;
+    
+    
+}
+
+void BST::Insert(int data)
+{
+    Node *temp=new Node;
+    temp->num=data;
+    temp->left=NULL;
+    temp->right=NULL;
+    
+    if(root==NULL)
+    root=temp;
+    
+    else
+    {
+        Node *node1=root;
+        
+        while(node1)
+        {
+            if(node1->num >= data)
+            node1=node1->left;
+            else
+            node1=node1->right;
+        }
+        
+        node1=temp;
+    }
+    
+    
+    
+}
+
+void inorder(Node*)
+void BST:: Print()
+{
+    Node *current=root;
+    inorder(current);
+}
