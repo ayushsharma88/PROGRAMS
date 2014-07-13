@@ -1,0 +1,28 @@
+void List::DeleteDup(int Num)
+{
+    Node *prev;
+    Node *current;
+    prev=current=head;
+    
+    while(current != NULL)
+    {
+        if(current == head && current->data == Num)
+        {
+            current=current->next;
+            head=current;
+            prev=current;
+        }
+        else if(current->data == Num)
+        {
+            prev->next=current->next;
+            current=prev->next;
+        }
+        else
+        {
+            prev=current;
+            current=current->next;
+        }
+    
+    }
+    
+}
