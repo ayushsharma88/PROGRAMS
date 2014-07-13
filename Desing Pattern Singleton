@@ -1,0 +1,21 @@
+
+
+class singleton
+{
+    private:
+    
+    static singleton instance;
+    singleton()
+    {
+      ....
+    };
+    public:
+    
+    static  Singleton getInstance()
+	  {
+		  if (instance == null)
+			  instance = new Singleton();
+
+		  return instance;
+	  }
+};
