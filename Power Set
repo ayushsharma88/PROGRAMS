@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<iostream>
+#include <stdlib.h>
+#include <string.h>
+
+using namespace std;
+
+
+void Powerset(char * Str,int start, int end)
+{
+    if(start> end)
+    {
+        cout<<" "<<endl;
+        return;
+    }
+    cout<<Str[start]<<endl;
+    int t1=start+1;
+    
+    while(t1 <= end)
+    {
+        cout<<Str[start]<<Str[t1]<<endl;
+        t1++;
+    }
+    Powerset(Str,start+1, end);
+}
+
+int main()
+{
+    char A[20] ={"ABC"};
+    int len = strlen(A);
+    
+    Powerset(A,0,len-1);
+    cout<<A<<endl;
+return 0;
+}
