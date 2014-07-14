@@ -1,0 +1,142 @@
+#include<stdio.h>
+#include<iostream>
+#include <stdlib.h>
+#include <string.h>
+
+using namespace std;
+
+    struct Node
+    {
+        int data;
+        Node *next;
+    } ;
+    
+    Node *head=NULL;
+    Node *head1=NULL;
+    
+    
+Node * Copy(int num)
+{
+    Node *newnode = (Node*)malloc(sizeof(Node));
+    newnode->data=num;
+    newnode->next=NULL;
+    
+    return newnode;
+    
+}
+    
+    
+    
+void Append(int num)
+{
+    Node *newnode = (Node*)malloc(sizeof(Node));
+    newnode->data=num;
+    newnode->next=NULL;
+    Node *Temp;
+    if(head==NULL)
+    {
+        head=newnode;
+        Temp=Copy(num);
+        head->next=Temp;
+        Temp->next=NULL;
+        
+        
+    }
+    else
+    {
+        Node *temp;
+        temp=head;
+        
+        while(temp->next != NULL)
+        temp=temp->next;
+        
+        temp->next=newnode;
+        Temp=Copy(num);
+        temp->next->next=Temp;
+        
+    }
+    
+    
+}
+
+void CopyList()
+{
+    Node *t1=head;
+    Node *Var=head;
+        
+    while(t1!=NULL && t1->next!= NULL && Var!=NULL && Var->next!= NULL)
+    {
+        Var=t1->next;
+        t1->next=t1->next->next;
+        Var->next=Var->next->next;
+        if(t1==head)
+        head1=Var;
+        if(Var->next !=NULL)
+        {
+            if(Var->next->next ==NULL)
+            t1->next->next = NULL;
+        }
+        else
+        {
+            t1->next = NULL;
+        }
+        t1=t1->next;
+        Var=Var->next;
+    }
+    
+}
+
+
+void Print()
+{
+    
+    if(head==NULL)
+    {
+        cout<<"List is Empty"<<endl;
+    }
+    else
+    {
+        Node *temp=head;
+        while(temp!=NULL)
+        {
+            cout<<temp->data<<endl;
+            temp=temp->next;
+        }
+    }
+}
+        
+
+void Print1()
+{
+    
+    if(head1==NULL)
+    {
+        cout<<"List is Empty"<<endl;
+    }
+    else
+    {
+        Node *temp=head1;
+        while(temp!=NULL)
+        {
+            cout<<temp->data<<endl;
+            temp=temp->next;
+        }
+    }
+}
+   
+        
+        
+        
+int main()
+{
+    Append(1);
+    Append(2);
+    Append(3);
+    Append(4);
+    Append(5);
+    CopyList();
+    Print();
+    Print1();
+    
+return 0;
+}
