@@ -1,0 +1,40 @@
+ 
+ int height(node* root)
+ {
+     if(root == NULL)
+     return 0;
+     
+     int LHeight= height(1+root->left);
+     int RHeight= height(1+root->right);
+     
+     if(lHeight > RHeight)
+     return RHeight;
+     else
+     return LHeight;
+}
+
+ void PrintGivenLevel(Node* root,int level)
+ {
+     if(root == NULL)
+     return;
+     if(level==1)
+     {
+         cout<<root->data;
+     }
+     else if(level > 1)
+     {
+         PrintGivenLevel(root->left,level-1);
+         PrintGivenLevel(root->right,level-1);
+     }
+ }
+ 
+ void PrintLevelOrder(Node *root)
+ {
+     int h=height(root);
+     
+     for(int i=1;i<=h;i++)
+     {
+         PrintGivenLevel(root,h);
+     }
+     
+ }
