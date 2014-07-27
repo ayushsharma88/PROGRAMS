@@ -1,0 +1,21 @@
+
+
+queue Node* Q
+
+void BFS(Node*root)
+{
+    push(root)
+    while(!queue empty)
+    {
+        temp=pop();
+        if(num=temp->data)
+        return 1;
+        
+        if(temp->left!=NULL)
+        push(temp->left);
+        
+        if(temp->right!=NULL)
+        push(temp->right);
+        
+    }
+}
