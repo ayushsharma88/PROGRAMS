@@ -1,0 +1,35 @@
+void presucc(node* root,node*& pre,node*&succ,int num)
+
+{
+    if(root->data==num)
+    {
+        if(root->right!=NULL)
+        {
+            node*temp=root->right;
+            wlile(temp->left)
+            temp=temp->left;
+            succ=temp;
+        }
+        
+        if(root->left!=NULL)
+        {
+            temp=root->left;
+            wlile(temp->right)
+            temp=temp->right;
+            pre=temp;
+        }
+    }
+    else if(root->data > num)
+    {
+        succ=root;
+        presucc(root->left,pre,succ,num);
+        
+    }
+    else if(root->data < num)
+    {
+        pre=root;
+        presucc(root->left,pre,succ,num);
+    }
+    
+    
+}
