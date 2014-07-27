@@ -1,0 +1,41 @@
+void LeftView(node *root, int level, int *maxlevel)
+{
+    if(root==NULL)
+    {
+        return;
+    }
+    
+    if(level > *maxlevel)
+    {
+        cout<<root->data;
+        *maxlevel=level;
+    }
+    
+    LeftView(root->left,level+1,maxlevel);
+    LeftView(root->right,level+1,maxlevel);
+}
+
+void RightView(node *root, int level, int *maxlevel)
+{
+    if(root==NULL)
+    {
+        return;
+    }
+    
+    if(level > *maxlevel)
+    {
+        cout<<root->data;
+        *maxlevel=level;
+    }
+    
+    RightView(root->right,level+1,maxlevel);
+    RightView(root->right,level+1,maxlevel);
+    
+}
+void PrintView(node *root)
+{
+    int maxlevel=0;
+    LeftView(root,1,maxlevel);
+    RightView(root,1,maxlevel);
+}
+
