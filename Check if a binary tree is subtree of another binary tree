@@ -1,0 +1,22 @@
+Following are detailed steps.
+
+1) Find inorder and preorder traversals of T, store them in two auxiliary arrays inT[] and preT[].
+
+2) Find inorder and preorder traversals of S, store them in two auxiliary arrays inS[] and preS[].
+
+3) If inS[] is a subarray of inT[] and preS[] is a subarray preT[], then S is a subtree of T. Else not.
+
+We can also use postorder traversal in place of preorder in the above algorithm.
+
+Let us consider the above example
+
+Inorder and Preorder traversals of the big tree are.
+inT[]   =  {a, c, x, b, z, e, k}
+preT[]  =  {z, x, a, c, b, e, k}
+
+Inorder and Preorder traversals of small tree are
+inS[]  = {a, c, x, b}
+preS[] = {x, a, c, b}
+
+We can easily figure out that inS[] is a subarray of 
+inT[] and preS[] is a subarray of preT[].
