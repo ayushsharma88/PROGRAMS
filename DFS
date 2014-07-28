@@ -1,0 +1,24 @@
+Visited[];
+Stack S;
+
+void DFS(node* root)
+{
+    if(root==NULL)
+    return;
+    S.Push(root);
+    while(S!isEmpty)
+    {
+        node*temp = S.top();
+        if(num == temp->data)
+        return;
+        if(temp->left && Visited[temp->left->data]!=1)
+        S.Push(temp->left->data);
+        else if(temp->right && Visited[temp->right->data]!=1)
+        S.Push(temp->right->data);
+        else if(!(temp->right && temp->left))
+        {
+            Visited[temp->data]=1;
+            S.pop();
+        }
+    }
+}
