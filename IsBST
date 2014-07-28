@@ -1,0 +1,12 @@
+boot IsBstUtil(node* root, int min, int max)
+{
+    if(root==NULL)
+    return true;
+    
+    if(root->data < min || root->data < max)
+    return false
+    
+    return(IsBstUtil(root->left,min,root->data-1)&&
+           IsBstUtil(root->right,root->data+1,max));
+           
+}
