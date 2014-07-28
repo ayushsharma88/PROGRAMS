@@ -1,0 +1,53 @@
+
+
+
+
+
+void StoreAlternate(node *root, char Arr[], int *index, int level)
+{
+    if(root==NULL)
+    return;
+    
+    StoreAlternate(root->left,Arr,index,level+1)
+    if((level) % 2 !=0)
+    Arr[(*index)++]=root=>data;
+    StoreAlternate(root->right,Arr,index,level+1)
+
+    
+}
+
+void Construct(node *root, char Arr[], int *index, int level)
+{
+    if(root==NULL)
+    return;
+    
+    StoreAlternate(root->left,Arr,index,level+1)
+    if((level) % 2 !=0)
+    root=>data=Arr[(*index)++];
+    StoreAlternate(root->right,Arr,index,level+1)
+
+    
+}
+
+void Inorder(Node* root)
+{
+    int index =0;
+    char Array[512];
+    StoreAlternate(root,Array,&index,0)
+    
+    reverse(Array);
+    inndex=0;
+    Construct(root,Array,&index,0)
+    
+}
+    
+               a
+            /     \
+           b       c
+         /  \     /  \
+        d    e    f    g
+       / \  / \  / \  / \
+       h  i j  k l  m  n  o
+       
+       
+
