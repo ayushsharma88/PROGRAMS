@@ -1,0 +1,36 @@
+struct Node* append(node *a, node *b)
+{
+    if(a== NULL)
+    return b;
+    if(b == NULL)
+    return a;
+    
+    struct * Aleft= a->left;
+    struct * Bleft= b->left;
+    
+    Aleft->right=b;
+    Bleft->rigt=a;
+    b->left=Aleft;
+    a->left=Bleft;
+    
+    return a;
+}
+
+
+struct Node* TREETOLIST(node * root)
+{
+    if(root == NULL)
+    return NULL;
+    
+    struct *Alist = (TREETOLIST(root->left));
+    struct *Blist = (TREETOLIST(root->right));
+    
+    root->left= root;
+    root->right=root;
+    
+    Alist= append(Alist,root);
+    Alist= append(Alist,Blist);
+    
+    return Alist;
+    
+}
