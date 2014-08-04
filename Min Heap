@@ -1,0 +1,75 @@
+#include <iostream>
+
+using namespace std;
+
+class Heap
+{
+    private:
+    int data;
+    
+    public:
+    int Array[250]; 
+    int size;
+    Heap();
+    void insert(int data);
+    void Delete(int data);
+    void deleteMin(int data);
+    void print();
+    int getMin();
+    
+};
+
+
+Heap::Heap()
+{
+    size=1;
+}
+
+void Heap::insert(int data)
+{
+    if(size > 250)
+    {
+        cout<<"Error in Heap"<<endl;
+    }
+    int Loc=size;
+    
+    Array[size++] = data;
+    
+    if(Array[1] > Array[Loc])
+    {
+        while((Loc > 1) && (Array[Loc] < Array[Loc/2]))
+        {
+            int temp=Array[Loc/2];
+            Array[Loc/2] = Array[Loc];
+            Array[Loc]=temp;
+            Loc=Loc/2;
+        }
+
+    }
+}
+
+int Heap::getMin()
+{
+    return Array[1];
+}
+
+int main()
+{
+   Heap *H = new Heap();
+   H->insert(6);
+   H->insert(3);
+   H->insert(19);
+   H->insert(7);
+   H->insert(91);
+   H->insert(1);
+   H->insert(2);
+   H->insert(31);
+   H->insert(42);
+   H->insert(77);
+   H->insert(5);
+   H->insert(12);
+   cout<<endl;
+   cout<<H->getMin()<<endl;
+   
+   return 0;
+}
