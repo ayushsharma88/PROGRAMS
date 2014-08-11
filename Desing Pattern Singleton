@@ -4,7 +4,7 @@ class singleton
 {
     private:
     
-    static singleton instance;
+    static singleton *instance;
     singleton()
     {
       ....
