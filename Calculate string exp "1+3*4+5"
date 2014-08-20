@@ -1,0 +1,126 @@
+#include<iostream>
+#include<stdio.h>
+#include <stack>
+
+using namespace std;
+
+bool HigherPriority(char Exp, char StackExp)
+{
+    if(StackExp == '*' && (Exp == '-' || Exp == '+'))
+    {
+        return 1;
+    }
+    else
+    return 0;
+    
+}
+void ChangetoPostfix(stack <char> &ExpressionStack, char *str )
+{
+    char *lLocalCopy= str;
+    char *begin = str;
+    
+    while(*lLocalCopy)
+    {
+        if(*lLocalCopy =='+' || *lLocalCopy =='*' || *lLocalCopy =='-')
+        {
+            if(ExpressionStack.empty())
+            {
+                ExpressionStack.push(*lLocalCopy);
+            }
+            else if(!HigherPriority(*lLocalCopy,ExpressionStack.top()))
+            {
+                ExpressionStack.push(*lLocalCopy);
+            }
+            else if(HigherPriority(*lLocalCopy,ExpressionStack.top()))
+            {
+                *begin= ExpressionStack.top();              
+                ExpressionStack.pop();
+                ExpressionStack.push(*lLocalCopy);
+                begin++;
+            }
+            
+            
+        }
+        else
+        {
+            *begin= *lLocalCopy;
+            begin++;
+        }
+        lLocalCopy++;
+    }
+    while(!ExpressionStack.empty())
+    {
+       *begin= ExpressionStack.top();
+       ExpressionStack.pop();
+       begin++;
+    }
+}
+
+int Calculate(int First,int Second,char opetator )
+{
+    switch(opetator)
+    {
+        case '+':
+        return Second + First;
+        break;
+        case '-':
+        return Second - First;
+        break;
+        case '*':
+        return Second * First;
+        break;
+        
+        
+    }
+}
+
+int myAtoi(char *str)
+{
+    int res = 0; // Initialize result
+ 
+    // Iterate through all characters of input string and update result
+    for (int i = 0; str[i] != '\0'; ++i)
+        res = res*10 + str[i] - '0';
+ 
+    // return result.
+    return res;
+}
+void EvaluatePostFix(stack <int> &ExpressionStack, char *str )
+{
+    char *lLocalCopy= str;
+    int First,Second;
+    while(*lLocalCopy)
+    {
+        if(*lLocalCopy =='+' || *lLocalCopy =='*' || *lLocalCopy =='-')
+        {
+            Second = ExpressionStack.top();
+            ExpressionStack.pop();
+            First = ExpressionStack.top();
+            ExpressionStack.pop();
+            ExpressionStack.push(Calculate(First,Second,*lLocalCopy));
+        }
+        else
+        {
+            ExpressionStack.push((*lLocalCopy- '0'));
+        }
+        lLocalCopy++;
+    }
+   
+    
+}
+
+int main()
+{
+    stack <char> Stack;
+    stack <int> Stats;
+    char Str [20]="6*6";
+    ChangetoPostfix(Stack,Str);
+    cout<<Str<<endl;
+    
+    EvaluatePostFix(Stats,Str);
+    cout<<Stats.top();
+
+
+    return 0;
+    
+}
